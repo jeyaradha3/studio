@@ -171,8 +171,8 @@ export default function Home() {
   
   const chartData = result
     ? [
-        { name: "Principal", value: result.principal, fill: "hsl(var(--muted))" },
-        { name: "Interest", value: result.interestEarned, fill: "hsl(var(--primary))" },
+        { name: "Principal", value: result.principal, fill: "green" },
+        { name: "Interest", value: result.interestEarned, fill: "red" },
       ]
     : [];
 
@@ -318,8 +318,8 @@ export default function Home() {
                       </ResponsiveContainer>
                     </ChartContainer>
                      <div className="flex justify-center gap-4 text-sm mt-2">
-                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-muted"></span>Principal</div>
-                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary"></span>Interest</div>
+                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'green'}}></span>Principal</div>
+                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'red'}}></span>Interest</div>
                     </div>
                   </div>
                 </CardContent>
@@ -362,5 +362,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
