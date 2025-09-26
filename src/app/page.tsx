@@ -84,9 +84,11 @@ const compoundingOptions = [
 const chartConfig = {
   principal: {
     label: "Principal",
+    color: "green",
   },
   interest: {
     label: "Interest",
+    color: "red",
   },
 } satisfies ChartConfig;
 
@@ -171,8 +173,8 @@ export default function Home() {
   
   const chartData = result
     ? [
-        { name: "Principal", value: result.principal, fill: "green" },
-        { name: "Interest", value: result.interestEarned, fill: "red" },
+        { name: "Principal", value: result.principal, fill: "var(--color-principal)" },
+        { name: "Interest", value: result.interestEarned, fill: "var(--color-interest)" },
       ]
     : [];
 
@@ -256,7 +258,7 @@ export default function Home() {
               </CardContent>
               <CardFooter className="flex justify-between gap-4">
                 <Button type="button" variant="outline" onClick={handleClear} className="w-full">
-                  <RotateCcw className="mr-2 h-4 w-4" /> Clear
+                  <RotateCcw className="mr-2 h-4 w-4" /> Reset
                 </Button>
                 <Button type="submit" disabled={isCalculating} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                   {isCalculating ? "Calculating..." : "Calculate"}
@@ -310,16 +312,16 @@ export default function Home() {
                             strokeWidth={2}
                             paddingAngle={5}
                           >
-                           {chartData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.fill} />
+                           {chartData.map((entry) => (
+                              <Cell key={`cell-${entry.name}`} fill={entry.fill} />
                             ))}
                           </Pie>
                         </PieChart>
                       </ResponsiveContainer>
                     </ChartContainer>
                      <div className="flex justify-center gap-4 text-sm mt-2">
-                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'green'}}></span>Principal</div>
-                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'red'}}></span>Interest</div>
+                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-principal)'}}></span>Principal</div>
+                        <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-interest)'}}></span>Interest</div>
                     </div>
                   </div>
                 </CardContent>
