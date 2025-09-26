@@ -185,7 +185,7 @@ export default function Home() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
               <Calculator className="text-primary" />
-              Maturity Calculator
+              FD Calculator
             </CardTitle>
             <CardDescription>
               Enter your Fixed Deposit details to calculate maturity amount and interest.
