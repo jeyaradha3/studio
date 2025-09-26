@@ -90,6 +90,13 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+const formatCurrency = (amount: number) => {
+    return `₹${amount.toLocaleString("en-IN", {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+    })}`;
+}
+
 export default function Home() {
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [aiSuggestion, setAiSuggestion] = useState<string | null>(null);
@@ -274,19 +281,19 @@ export default function Home() {
                     <div>
                       <p className="text-sm text-muted-foreground">Principal Amount</p>
                       <p className="text-2xl font-bold">
-                        {result.principal.toLocaleString("en-IN", { style: "currency", currency: "INR" })}
+                        {formatCurrency(result.principal)}
                       </p>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Total Interest</p>
                       <p className="text-2xl font-bold text-primary">
-                        {result.interestEarned.toLocaleString("en-IN", { style: "currency", currency: "INR" })}
+                        {formatCurrency(result.interestEarned)}
                       </p>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Maturity Amount</p>
                       <p className="text-3xl font-bold text-accent-foreground">
-                        {result.maturityAmount.toLocaleString("en-IN", { style: "currency", currency: "INR" })}
+                        {formatCurrency(result.maturityAmount)}
                       </p>
                     </div>
                   </div>
@@ -355,3 +362,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
